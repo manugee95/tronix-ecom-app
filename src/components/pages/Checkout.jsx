@@ -37,7 +37,7 @@ function Checkout() {
     const currency = "NGN";
 
     try {
-      const res = await fetch("http://localhost:3000/api/payment/initiate", {
+      const res = await fetch("https://ecomfront-test.onrender.com/api/payment/initiate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +77,7 @@ function Checkout() {
                 <td>
                   <div className="flex justify-center">
                     <img
-                      src={"http://localhost:3000/" + item.product.img}
+                      src={"https://ecomfront-test.onrender.com/" + item.product.img}
                       className="h-[50px]"
                       alt=""
                     />

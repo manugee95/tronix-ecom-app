@@ -27,7 +27,7 @@ function Featured() {
           <Card key={item._id}>
             <Link to={`/detail/${item._id}`}>
               <img
-                src={"http://localhost:3000/" + item.img}
+                src={"https://ecomfront-test.onrender.com/" + item.img}
                 alt=""
                 className="h-[200px]"
               />

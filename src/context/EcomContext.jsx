@@ -36,31 +36,31 @@ export const EcomProvider = ({ children }) => {
   console.log(cartCount);
 
   const fetchProduct = async () => {
-    const response = await fetch("http://localhost:3000/api/product");
+    const response = await fetch("https://ecomfront-test.onrender.com/api/product");
     const data = await response.json();
     setProduct(data);
   };
 
   const fetchFeatured = async () => {
-    const res = await fetch("http://localhost:3000/api/product/featured");
+    const res = await fetch("https://ecomfront-test.onrender.com/api/product/featured");
     const data = await res.json();
     setFeatured(data);
   };
   const fetchTopSelling = async () => {
-    const res = await fetch("http://localhost:3000/api/product/topSelling");
+    const res = await fetch("https://ecomfront-test.onrender.com/api/product/topSelling");
     const data = await res.json();
     setTopSelling(data);
   };
 
   const fetchCarousel = async () => {
-    const response = await fetch("http://localhost:3000/carousel");
+    const response = await fetch("https://ecomfront-test.onrender.com/carousel");
     const data = await response.json();
     setSlide(data);
   };
 
   const addToCart = async (productId) => {
     try {
-      const response = await fetch("http://localhost:3000/addToCart", {
+      const response = await fetch("https://ecomfront-test.onrender.com/addToCart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export const EcomProvider = ({ children }) => {
 
   const fetchCart = async () => {
     try {
-      const response = await fetch("http://localhost:3000/cart", {
+      const response = await fetch("https://ecomfront-test.onrender.com/cart", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -130,7 +130,7 @@ export const EcomProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:3000/update-quantity", {
+      const res = await fetch("https://ecomfront-test.onrender.com/update-quantity", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -161,7 +161,7 @@ export const EcomProvider = ({ children }) => {
   const removeItem = async (productId) => {
     console.log(productId);
     try {
-      const res = await fetch("http://localhost:3000/remove-item", {
+      const res = await fetch("https://ecomfront-test.onrender.com/remove-item", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -218,7 +218,7 @@ export const EcomProvider = ({ children }) => {
 
   const createOrder = async (transaction_id, orderId) => {
     try {
-      const res = await fetch('http://localhost:3000/api/payment/verify', {
+      const res = await fetch('https://ecomfront-test.onrender.com/api/payment/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
