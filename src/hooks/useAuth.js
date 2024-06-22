@@ -9,7 +9,7 @@ const useAuth = () => {
       const token = localStorage.getItem("auth-token");
       if (token) {
         try {
-          const response = await fetch("http://localhost:3000/user", {
+          const response = await fetch("https://ecomfront-test.onrender.com/user", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
