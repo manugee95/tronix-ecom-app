@@ -2,7 +2,7 @@ import avatar from "../assets/avatar.png";
 import { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { BsCart4 } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import EcomContext from "../context/EcomContext";
 import AuthContext from "../context/AuthContext";
@@ -11,7 +11,7 @@ import useAuth from "../hooks/useAuth";
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const { cartItems, showAndHide } = useContext(EcomContext);
+  const { cartItems, showAndHide, cartCount } = useContext(EcomContext);
   const {user} = useAuth()
   const [state, dispatch] = useContext(AuthContext);
   const { deleteItem } = useLocalStorage("auth-token");
@@ -23,14 +23,12 @@ function Header() {
     try {
       deleteItem();
       dispatch({ type: "setToken", payload: null });
-      redirect("/login")
+      <Navigate to="/login" />
       showAndHide("success", "You are now signed out");
     } catch (error) {
       console.log(error);
     }
   }
-
-  useEffect(() => {});
 
   const showHeader = (
     <div className="sticky top-0 z-[20] flex items-center justify-between py-[15px] px-5 lg:px-[30px] bg-orange-500">
@@ -48,15 +46,6 @@ function Header() {
           to="/products"
         >
           Products
-        </Link>
-        <Link
-          className="text-[15px] font-medium hover:text-white relative"
-          to="/cart"
-        >
-          <BsCart4 className="text-xl" />
-          <div className="absolute bottom-2 left-2 bg-black text-center text-white rounded-full h-4 w-4 text-[10px] pt-[1px]">
-            {cartItems.length}
-          </div>
         </Link>
         <Link className="text-[15px] font-medium hover:text-white" to="/login">
           Login
@@ -101,15 +90,6 @@ function Header() {
             Products
           </Link>
           <Link
-            className="text-[25px] relative font-medium hover:text-orange-500"
-            to="/cart"
-          >
-            <BsCart4 className="text-4xl" />
-            <div className="absolute bottom-4 left-4 bg-black text-center text-white rounded-full h-6 w-6 text-[15px] pt-[1px]">
-              {cartItems.length}
-            </div>
-          </Link>
-          <Link
             className="text-[25px] font-medium hover:text-orange-500"
             to="/login"
           >
@@ -149,7 +129,7 @@ function Header() {
         >
           <BsCart4 className="text-xl" />
           <div className="absolute bottom-2 left-2 bg-black text-center text-white rounded-full h-4 w-4 text-[10px] pt-[1px]">
-            {cartItems.length}
+            {cartCount}
           </div>
         </Link>
         <Link
@@ -202,7 +182,7 @@ function Header() {
           >
             <BsCart4 className="text-4xl" />
             <div className="absolute bottom-4 left-4 bg-black text-center text-white rounded-full h-6 w-6 text-[15px] pt-[1px]">
-              {cartItems.length}
+              {cartCount}
             </div>
           </Link>
           <Link
